@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Left, Body, Right, ListItem, Thumbnail, Badge, Text } from 'native-base'
+import { Container, Left, Body, Right, List, ListItem, Thumbnail, Badge, Text } from 'native-base'
 import { StyleSheet, Modal } from 'react-native';
 import { data } from '../data';
 
@@ -12,7 +12,7 @@ export default class Chats extends Component {
 	  };
 	}
 
-	setModalVisible(visible) {
+	setModalVisible(person, visible) {
     this.setState({modalVisible: visible});
   }
 
@@ -22,54 +22,56 @@ export default class Chats extends Component {
 						{
 							data.map((person, i)=>{
 								return(
-									<ListItem 
-										onPress={() => this.setModalVisible(true)} 
-										key={i} 
-										thumbnail 
-										style={StyleSheet.flatten(styles.list)}>
-										<Left>
-											<Thumbnail source={require('../thumb_nail.jpg')} />
-										</Left>
-										{
-											person.read?
-												<Body>
-													<Text>{person.name}</Text>
-													<Text note>{ ((person.text).length > 30) ? 
-  													(((person.text).substring(0,30-3)) + '...') : 
-    												person.text }
-    											</Text>
-												</Body>
-											:
-												<Body>
-													<Text>{person.name}</Text>
-													<Text note>{ ((person.text).length > 30) ? 
-  													(((person.text).substring(0,30-3)) + '...') : 
-    												person.text }
-    											</Text>
-												</Body>
-										}
-										{
-											!person.read ?
-											<Right>
-												<Text style={StyleSheet.flatten(styles.time)}>{person.time}</Text>
-												<Badge success style={StyleSheet.flatten(styles.badge)}>
-													<Text>1</Text>
-												</Badge>
-											</Right>
-											:
-											<Right>
-												<Text style={StyleSheet.flatten(styles.time)}>{person.time}</Text>
-											</Right>
-										}
-									</ListItem>
+									<List style={StyleSheet.flatten(styles.list)}	key={i}>
+										<ListItem 
+											onPress={(person) => this.setModalVisible(person, true)} 
+											thumbnail 
+											style={StyleSheet.flatten(styles.list_item)}>
+											<Left>
+												<Thumbnail source={require('../thumb_nail.jpg')} />
+											</Left>
+											{
+												person.read?
+													<Body>
+														<Text>{person.name}</Text>
+														<Text note>{ ((person.text.split(' ')).length >= 7) ? 
+	  													(((person.text).substring(0,30-3)) + '...') : 
+	    												person.text }
+	    											</Text>
+													</Body>
+												:
+													<Body>
+														<Text>{person.name}</Text>
+														<Text note>{ ((person.text.split(' ')).length > 7) ? 
+	  													(((person.text).substring(0,30-3)) + '...') : 
+	    												person.text }
+	    											</Text>
+													</Body>
+											}
+											{
+												!person.read ?
+												<Right>
+													<Text style={StyleSheet.flatten(styles.time)} note>{person.time}</Text>
+													<Badge success style={StyleSheet.flatten(styles.badge)}>
+														<Text>1</Text>
+													</Badge>
+												</Right>
+												:
+												<Right>
+													<Text style={StyleSheet.flatten(styles.time)} note>{person.time}</Text>
+												</Right>
+											}
+										</ListItem>
+									</List>
 								)
 							})
 						}
 						<Modal
-						animationType={"slide"}
-	          transparent={false}
-	          visible={this.state.modalVisible}
-	          onRequestClose={() => this.setModalVisible(!this.state.modalVisible) }>
+							animationType={"slide"}
+		          transparent={false}
+		          visible={this.state.modalVisible}
+		          onRequestClose={() => this.setModalVisible(!this.state.modalVisible) }
+		         >
 							
 						</Modal>
 			</Container>
@@ -79,6 +81,9 @@ export default class Chats extends Component {
 
 const styles = {
 	list: {
+		flex: 1
+	},
+	list_item: {
 		marginRight: 15
 	},
 	time: {

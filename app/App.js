@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Button, Body, Icon, Header, Tabs, Tab, Left, Right, Text } from 'native-base';
+import { Container, StyleProvider, Button, Body, Icon, Header, Tabs, Tab, Left, Right, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
+import getTheme from '../native-base-theme/components';
+import material from '../native-base-theme/variables/material';
 
 import Chats from './tabs/Chats';
 import Calls from './tabs/Calls';
@@ -9,6 +11,7 @@ import Status from './tabs/Status';
 export default class App extends Component {
 	render() {
 		return (
+			<StyleProvider style={getTheme(material)}>
 				<Container>
 					<Header hasTabs style={StyleSheet.flatten(styles.header)}>
 						<Left>
@@ -19,7 +22,7 @@ export default class App extends Component {
             		<Icon style={StyleSheet.flatten(styles.header_content)} ios='ios-search' android='md-search'/>
             	</Button>
             	<Button transparent>
-            		<Icon style={StyleSheet.flatten(styles.header_content)} name='dots-vertical'/>
+            		<Icon style={StyleSheet.flatten(styles.header_content)} name='menu'/>
             	</Button>
             </Right>
 					</Header>
@@ -50,20 +53,21 @@ export default class App extends Component {
               </Tab>
           </Tabs>
 				</Container>
+			</StyleProvider>
 		);
 	}
 }
-const styles = StyleSheet.create({
+const styles = {
 	header: {
 		backgroundColor: '#004B49'
 	},
 	header_text: {
-		fontSize: 17,
+		fontSize: 18,
 		color: '#fff'
 	},
 	header_content: {
 		color: '#fff',
 		fontSize: 18
-	},
-});
+	}
+}
 
