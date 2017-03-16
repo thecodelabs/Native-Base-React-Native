@@ -62,6 +62,7 @@ const styles = {
 		backgroundColor: '#004B49'
 	},
 	header_text: {
+		marginLeft: 4,
 		fontSize: 18,
 		color: '#fff'
 	},

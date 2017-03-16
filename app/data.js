@@ -42,79 +42,13 @@ export const data = [
 		read: true
 	},
 	{
-		name: "Person",
+		name: "Travis Jr.",
 		time: '12:45PM',
 		text: "Lorem ipsum dolor itsum woke ipsum dolor itsum woke",
 		read: true
 	},
 	{
-		name: "Person",
-		time: '12:45PM',
-		text: "Lorem ipsum dolor itsum woke",
-		read: true
-	},
-	{
-		name: "Person",
-		time: '12:45PM',
-		text: "Lorem ipsum dolor itsum woke",
-		read: true
-	},
-	{
-		name: "Person",
-		time: '12:45PM',
-		text: "Lorem ipsum dolor itsum woke",
-		read: true
-	},
-	{
-		name: "Person",
-		time: '12:45PM',
-		text: "Lorem ipsum dolor itsum woke",
-		read: true
-	},
-	{
-		name: "Person",
-		time: '12:45PM',
-		text: "Lorem ipsum dolor itsum woke",
-		read: true
-	},
-	{
-		name: "Person",
-		time: '12:45PM',
-		text: "Lorem ipsum dolor itsum woke",
-		read: true
-	},
-	{
-		name: "Person",
-		time: '12:45PM',
-		text: "Lorem ipsum dolor itsum woke",
-		read: true
-	},
-	{
-		name: "Person",
-		time: '12:45PM',
-		text: "Lorem ipsum dolor itsum woke",
-		read: true
-	},
-	{
-		name: "Person",
-		time: '12:45PM',
-		text: "Lorem ipsum dolor itsum woke",
-		read: true
-	},
-	{
-		name: "Person",
-		time: '12:45PM',
-		text: "Lorem ipsum dolor itsum woke",
-		read: true
-	},
-	{
-		name: "Person",
-		time: '12:45PM',
-		text: "Lorem ipsum dolor itsum woke",
-		read: true
-	},
-	{
-		name: "Person",
+		name: "Shawn Kyle",
 		time: '12:45PM',
 		text: "Lorem ipsum dolor itsum woke",
 		read: true
