@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Modal } from 'react-native';
+import { StyleSheet, Modal, Image } from 'react-native';
 import { 
-	Container, 
+	Container,
+	Content, 
 	Left, 
+	Button,
+	Icon,
 	Body, 
 	Right, 
 	List,
@@ -10,6 +13,7 @@ import {
 	Thumbnail, 
 	Badge,
 	View, 
+	Header,
 	Text } from 'native-base';
 
 import { data } from '../data';
@@ -19,14 +23,18 @@ export default class Chats extends Component {
 	  super(props);
 	
 	  this.state = {
-	  	modalVisible: false
+	  	modalVisible: false,
+	  	person: {}
 	  };
 	}
 
-	setModalVisible(person, visible) {
+	setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
-
+	parsePerson(person, boolean) {
+		this.setModalVisible(boolean);
+		this.setState({person});
+	}
 	render() {
 		return (
 			<Container>
@@ -34,7 +42,7 @@ export default class Chats extends Component {
 					dataArray={data} 
 					renderRow={(person) =>
 					<ListItem 
-						onPress={(person) => this.setModalVisible(person, true)} 
+						onPress={() => this.parsePerson(person, true)} 
 						thumbnail 
 						style={StyleSheet.flatten(styles.list_item)}>
 						<Left>
@@ -79,7 +87,32 @@ export default class Chats extends Component {
           visible={this.state.modalVisible}
           onRequestClose={() => this.setModalVisible(!this.state.modalVisible) }
          >
-					
+				<Header>
+					<Left style={{flex: 1, flexDirection: 'row'}}>
+						<Button transparent onPress={()=> this.setModalVisible(!this.state.modalVisible)}>
+							<Icon name="arrow-back"/>
+						</Button>
+						<Button transparent>
+							<Thumbnail style={StyleSheet.flatten(styles.userIcon)} source={require('../thumb_nail.jpg')} />
+							<Text style={{marginLeft: 5, paddingBottom: 5}}>{this.state.person.name}</Text>
+						</Button>
+
+					</Left>
+					<Right>
+						<Button transparent>
+							<Icon name="call"/>
+						</Button>
+						<Button transparent>
+							<Icon name="attach" style={{ transform: [{rotate: '-30deg'}] }}/>
+						</Button>
+						<Button transparent>
+							<Icon name="menu"/>
+						</Button>
+					</Right>
+				</Header>
+				<Content>
+					<Image source={require('../bg_chats.jpg')} style={StyleSheet.flatten(styles.chats_bg)}/>
+				</Content>
 				</Modal>
 			</Container>
 		);
@@ -102,5 +135,13 @@ const styles = {
 		height: 28,
 		marginBottom: -20,
 		width:28
+	},
+	chats_bg: {
+		flex: 1,
+		resizeMode: 'cover'
+	},
+	userIcon: {
+		height:45,
+		width: 45
 	}
 }
