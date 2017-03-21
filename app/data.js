@@ -15,7 +15,8 @@ export const data = [
 		name: "Susan Kunovsky",
 		time: '12:45PM',
 		text: "Lorem ipsum dolor itsum woke",
-		read: true
+		read: true,
+		call: '11 January, 3:23pm'
 	},
 	{
 		name: "Loura Simpson",
@@ -33,13 +34,15 @@ export const data = [
 		name: "Tom Jerry",
 		time: '12:45PM',
 		text: "Lorem ipsum dolor itsum woke",
-		read: true
+		read: true,
+		call: '11 January, 5:00pm'
 	},
 	{
 		name: "Doe John",
 		time: '12:45PM',
 		text: "Lorem ipsum dolor itsum woke",
-		read: true
+		read: true,
+		call: '11 January, 7:23pm'
 	},
 	{
 		name: "Travis Jr.",
@@ -51,6 +54,7 @@ export const data = [
 		name: "Shawn Kyle",
 		time: '12:45PM',
 		text: "Lorem ipsum dolor itsum woke",
-		read: true
+		read: true,
+		call: '1 January, 9:30pm'
 	}
 ]
